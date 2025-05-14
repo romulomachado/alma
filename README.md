@@ -31,6 +31,11 @@ Open [http://localhost:3000](http://localhost:3000).
 
 Open [http://localhost:3000/admin/leads](http://localhost:3000), you should be redirected to `/login`. To simplify, I just added a username field, anything different from `admin` should throw an error.
 
+Vercel links:
+
+1. https://alma-smoky.vercel.app/
+2. https://alma-smoky.vercel.app/admin/leads
+
 ## Design Document
 
 ### Overview
