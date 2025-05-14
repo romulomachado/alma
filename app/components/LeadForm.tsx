@@ -2,8 +2,19 @@
 
 import { useState } from "react";
 
+const VISA_OPTIONS = ["O-1", "EB-1A", "EB-2", "NIW", "I don't know"];
+
 export default function LeadForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [visaCategories, setVisaCategories] = useState([]);
+
+  const handleVisaCategoryChange = (e) => {
+    const { value, checked } = e.target;
+    setVisaCategories((prev) =>
+      checked ? [...prev, value] : prev.filter((v) => v !== value)
+    );
+  };
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -123,6 +134,22 @@ export default function LeadForm() {
         <h2 className="text-2xl font-extrabold leading-none tracking-tight mb-5 text-center">
           Visa categories of interest?
         </h2>
+
+        <fieldset>
+          <div className="space-y-2 mt-2">
+            {VISA_OPTIONS.map((option) => (
+              <label key={option} className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  value={option}
+                  checked={visaCategories.includes(option)}
+                  onChange={handleVisaCategoryChange}
+                />
+                {option}
+              </label>
+            ))}
+          </div>
+        </fieldset>
 
         <h2 className="text-2xl font-extrabold leading-none tracking-tight text-center">
           How can we help you?
