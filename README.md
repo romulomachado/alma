@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Alma LegalTech Frontend Assessment Project
 
-## Getting Started
+---
 
-First, run the development server:
+## Table of Contents
+
+- [Setup Guide](#setup-guide)
+- [Design Document](#design-document)
+  - [Overview](#overview)
+  - [Architecture](#architecture)
+  - [Design Choices](#design-choices)
+  - [Folder Structure](#folder-structure)
+  - [Future Improvements](#future-improvements)
+- [License](#license)
+
+---
+
+## Setup Guide
+
+To run the app locally:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Public Lead Form (`/`)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open [http://localhost:3000](http://localhost:3000).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. Internal Lead Management UI
 
-## Learn More
+Open [http://localhost:3000/admin/leads](http://localhost:3000), you should be redirected to `/login`. To simplify, I just added a username field, anything different from `admin` should throw an error.
 
-To learn more about Next.js, take a look at the following resources:
+## Design Document
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Overview
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+To get close to the provided mockups, I leveraged Tailwind to quickly create components.
 
-## Deploy on Vercel
+### Architecture
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Frontend: Next.js with React 18
+- Styling: Tailwind CSS for reusable UI components
+- Forms: React Hook Form + Zod for schema validation
+- Authentication: NextAuth.js
+- File Uploads: N/A
+- State Management: local component state
+- Routing: App Router (Next.js 13+)
+- API: Built-in API routes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Design Choices
+
+- App Router over Pages Router: Chosen for enhanced routing capabilities and more modern approach
+- Mocked auth with a `token` cookie for simplicity's sake. This shouldn't ever hit production, but it's simple enough to get the job done here
+
+### Future Improvements
+
+- Implement real authentication with NextAuth.js
+- Add React Hook Form for better performance and integrate with zod for schema-based validation
+- Add unit and integration tests (Jest + React Testing Library)
+- Handle file upload via API routes to cloud storage (e.g., S3 or Cloudinary)
