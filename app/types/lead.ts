@@ -1,5 +1,5 @@
 export interface Lead {
-  id: string;
+  id: number;
   name: string;
   createdAt: string;
   status: string;

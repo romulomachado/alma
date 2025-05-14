@@ -4,18 +4,7 @@ import { redirect } from "next/navigation";
 import Sidebar from "@/app/components/Sidebar";
 import { Lead } from "@/app/types/lead";
 import { checkAuth } from "@/app/auth";
-
-async function getLeads() {
-  const cookiesHeader = await cookies();
-
-  const res = await fetch("http://localhost:3000/api/leads", {
-    cache: "no-store",
-    headers: {
-      cookie: cookiesHeader.toString(),
-    },
-  });
-  return res.json();
-}
+import { fetchLeadsFromDB } from "@/lib/leads";
 
 export default async function AdminLeadsPage() {
   const { isAuthenticated } = await checkAuth();
@@ -24,7 +13,7 @@ export default async function AdminLeadsPage() {
     redirect("/login");
   }
 
-  const leads = await getLeads();
+  const leads = await fetchLeadsFromDB();
 
   return (
     <div className="min-h-screen flex">
