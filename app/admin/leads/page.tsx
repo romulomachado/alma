@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 import Sidebar from "@/app/components/Sidebar";
+import { Lead } from "@/app/types/lead";
 import { checkAuth } from "@/app/auth";
 
 async function getLeads() {
@@ -50,7 +51,7 @@ export default async function AdminLeadsPage() {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {leads?.map(({ id, name, createdAt, status, country }) => (
+              {leads?.map(({ id, name, createdAt, status, country }: Lead) => (
                 <tr key={id}>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                     {name}

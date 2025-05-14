@@ -6,9 +6,11 @@ const VISA_OPTIONS = ["O-1", "EB-1A", "EB-2", "NIW", "I don't know"];
 
 export default function LeadForm() {
   const [submitted, setSubmitted] = useState(false);
-  const [visaCategories, setVisaCategories] = useState([]);
+  const [visaCategories, setVisaCategories] = useState<string[]>([]);
 
-  const handleVisaCategoryChange = (e) => {
+  const handleVisaCategoryChange = (e: {
+    target: { value: any; checked: any };
+  }) => {
     const { value, checked } = e.target;
     setVisaCategories((prev) =>
       checked ? [...prev, value] : prev.filter((v) => v !== value)
