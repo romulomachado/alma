@@ -20,7 +20,7 @@ export default async function AdminLeadsPage() {
 
       <main className="flex-1 p-8">
         <h2 className="text-xl font-semibold mb-6">Leads</h2>
-        <div className="overflow-auto bg-white border border-gray-200 rounded-3xl">
+        <div className="overflow-auto bg-white">
           <LeadsTable leads={leads} />
         </div>
       </main>
